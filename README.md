@@ -5,16 +5,20 @@
 
 所有日记、图片、草稿都在手机本地。只有「获取天气」和「在线换一首诗」会发起匿名 HTTPS GET；没有账号、没有后端、没有付费 Key、没有云同步。
 
-## 已生成 APK
+## 下载
 
-本次已实际构建 release APK，并安装到 Android 14（x86_64）模拟器验证启动。
+GitHub Releases：https://github.com/Liuchang995/yiri/releases/tag/v1.0.1
 
-- 文件：[一日-release.apk](一日-release.apk)
-- 大小：65,144,802 字节（约 62.1 MiB）
-- SHA-256：`2A7789B71ED9ECDF08B2B9B73F680DAD9F9E687AD171673EB963634704F2F528`
+| 文件 | 架构 | 大小 |
+| --- | --- | --- |
+| `yiri-arm64-v8a.apk` | 现代 64 位手机（推荐） | 23,191,455 字节 |
+| `yiri-armeabi-v7a.apk` | 较老 32 位 Android | 20,866,105 字节 |
+| `yiri-x86_64.apk` | 模拟器 / x86_64 | 24,610,024 字节 |
+
+本地也有同样三份文件，位于 `release/`。
+
 - 本版：三 Tab、3/5 屏月历、年月切换弹窗、阴历、过去选中日期卡片、阅读详情页、收藏横卡与回到顶部、月历随页滚动、编辑页日期放大、应用内相机、导入导出、纯黑主题。
 - 签名：当前 `android/app/build.gradle.kts` 的 release 使用 debug signing，可直接安装自用；上架 Google Play 前需要换成正式 keystore。
-- 架构：通用 APK，包含 arm64-v8a / armeabi-v7a / x86_64。
 - 应用图标：手写「一日」，源图在 `design/app_icon_source.jpg`；iOS 与 Android 各尺寸图标由 `design/make_icons.py` 生成。
 
 ## 界面预览
