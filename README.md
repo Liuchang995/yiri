@@ -376,6 +376,14 @@ abstract interface class PoetryRemoteSource {
 
 代码层面已通过 `flutter analyze` 零 issue 和 20 个自动化测试；导入导出 zip 与 Drift 数据规则在测试中真实读写验证。
 
+## 开源与许可
+
+- GitHub 仓库：https://github.com/Liuchang995/yiri
+- 源码公开，采用仓库根目录的 [LICENSE](LICENSE)：《一日 · 非商业源码许可 1.0》。
+- 允许个人学习、修改和非商业分发；**禁止任何商业使用**。
+- 如需商业授权，请联系仓库所有者。
+- 3 个架构的 APK 发布在 GitHub Releases，不提交进源码仓库。
+
 ## 隐私
 
 - 无登录、无账号、无云端；
