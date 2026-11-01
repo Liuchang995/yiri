@@ -5,7 +5,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 import '../../core/app_colors.dart';
-import '../../core/date_utils.dart';
 import '../../data/preferences/preferences.dart';
 import '../../data/poetry/poetry_service.dart';
 import '../../data/startup_state.dart';
@@ -36,19 +35,6 @@ class _SplashPageState extends ConsumerState<SplashPage>
     final startup = ref.read(startupStateProvider);
     _poem = startup.initialPoem;
     _loadedFromCache = startup.initialFromCache;
-    try {
-      final preferences = ref.read(sharedPreferencesProvider);
-      final seenToday =
-          preferences.getString(lastSplashDateKey) == dateKey(DateTime.now());
-      final onboarded = preferences.getBool(permissionsOnboardedKey) ?? false;
-      if (seenToday && onboarded) {
-        WidgetsBinding.instance.addPostFrameCallback((_) {
-          if (mounted) context.go('/home');
-        });
-      }
-    } catch (_) {
-      // 测试环境没有共享偏好时正常展示开屏。
-    }
     if (!_loadedFromCache) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
         unawaited(_fetchOnlinePoem());
@@ -105,14 +91,6 @@ class _SplashPageState extends ConsumerState<SplashPage>
     } catch (_) {
       needsPermissions = false;
     }
-    try {
-      await ref
-          .read(sharedPreferencesProvider)
-          .setString(lastSplashDateKey, dateKey(DateTime.now()));
-    } catch (_) {
-      // 写偏好失败不阻塞进入首页。
-    }
-    if (!mounted) return;
     context.go(needsPermissions ? '/permissions' : '/home');
   }
 
